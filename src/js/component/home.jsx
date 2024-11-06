@@ -1,10 +1,10 @@
 import React from "react";
-import ToDoList from "./toDoList";
+import Personajes from "./personajes";
 
 
 const Home = () => {
 	return (
-		<ToDoList/>
+		<Personajes/>
 	);
 };
 
