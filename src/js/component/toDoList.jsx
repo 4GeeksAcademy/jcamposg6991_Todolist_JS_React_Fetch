@@ -6,7 +6,6 @@ const ToDoList = () => {
     const [todos, setTodos] = useState([])
 
     function getUser() {
-
         return fetch("https://playground.4geeks.com/todo/users/jcamposg6991", { method: "GET" })
             .then(response => response.json())
             .then((data) => setUser(data))
