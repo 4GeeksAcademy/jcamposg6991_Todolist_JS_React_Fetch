@@ -10,3 +10,48 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+.toDoList {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+    width: 50%;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  input {
+    padding: 8px;
+    font-size: 16px;
+    width: 80%;
+    margin-right: 5px;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .delete-button {
+    display: none;
+  }
+  
+  li.task-item:hover .delete-button {
+    display: inline;
+  }
