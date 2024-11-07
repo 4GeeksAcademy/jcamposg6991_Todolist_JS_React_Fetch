@@ -31,14 +31,26 @@ const ToDoList = () => {
 
 
     return (
-        <div className="text-center">
-            {<h1>{user.name}</h1>}
+        <div className="text-center toDoList">
+             <h1>To do List</h1>
+            {<h1>Usuario: {user.name}</h1>}
+            {/* <input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && addTask(inputValue)}
+              placeholder="What needs to be done?"
+            /> */}
             <ul>
-                {todos.map((item, index) => (
-                    <li key={index}>{item.label}</li>
-                ))}
+              {todos.map((item, index) => (
+                <li key={index} className="task-item">
+                  {item.label}
+                  <button className="delete-button" onClick={() => removeTask(index)}>X</button>
+                </li>
+              ))}
             </ul>
         </div>
+  
     )
 
 }
