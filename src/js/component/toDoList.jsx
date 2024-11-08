@@ -36,7 +36,6 @@ const ToDoList = () => {
   useEffect(() => {
     getUser()
     getTodos()
-
   }, [])
 
 
@@ -52,8 +51,8 @@ const ToDoList = () => {
         {todos.length === 0 ? (
           <li className="task-item">No hay tareas registradas</li>
         ) : (
-          todos.map((item, index) => (
-            <li key={index} className="task-item">
+          todos.map((item) => (
+            <li key={id} className="task-item">
               {item.label}
               <button className="delete-button" /*onClick={() => removeTask(index)}*/>X</button>
             </li>
