@@ -5,6 +5,13 @@ const ToDoList = () => {
     const [user, setUser] = useState("")
     const [todos, setTodos] = useState([])
 
+    function createUser(){
+      return fetch("https://playground.4geeks.com/todo/users/jcamposg6991", {method: "POST", headers:{"Content-Type":"application/json"}})
+      .then(response=>response.json())
+      .then((data)=>console.log(data))
+      .then((error)=>console.log(error))
+    }
+
     function getUser() {
         return fetch("https://playground.4geeks.com/todo/users/jcamposg6991", { method: "GET" })
             .then(response => response.json())
@@ -19,9 +26,13 @@ const ToDoList = () => {
         .catch((error) => console.log(error)) 
     }
 
+
+
     useEffect(() => {
-        getUser()
-        getTodos()
+
+      createUser()
+      getUser()
+      getTodos()
 
     }, [])
 
