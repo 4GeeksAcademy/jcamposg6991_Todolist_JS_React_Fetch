@@ -57,6 +57,23 @@ const ToDoList = () => {
     console.log("No se ha ingresado tarea");
   }
 
+  function deleteTodo(todoId){
+    return fetch("https://playground.4geeks.com/todo/todos/"+todoId, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then((response) => response)
+    .then(() => {
+      return getTodos(); 
+    })
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
+  }
+
+
+
   useEffect(() => {
     createUser();
     getUser();
@@ -78,10 +95,10 @@ const ToDoList = () => {
         {todos.length === 0 ? (
           <li className="task-item">No hay tareas registradas</li>
         ) : (
-          todos.map((item, index) => (
-            <li key={index} className="task-item">
+          todos.map((item) => (
+            <li key={item.id} className="task-item">
               {item.label}
-              <button className="delete-button">X</button>
+              <button className="delete-button" onClick={()=>deleteTodo(item.id)}>X</button>
             </li>
           ))
         )}
