@@ -4,6 +4,7 @@ const ToDoList = () => {
 
   const [user, setUser] = useState("")
   const [todos, setTodos] = useState([])
+  const [inputValue, setInputValue] = useState("")
 
   function createUser() {
     return fetch("https://playground.4geeks.com/todo/users/jcamposg6991", { method: "POST", headers: { "Content-Type": "application/json" } })
@@ -31,6 +32,17 @@ const ToDoList = () => {
       .catch((error) => console.log(error))
   }
 
+  function createTodo(todo){
+    return fetch("https://playground.4geeks.com/todo/todos/jcamposg6991", { method: "POST", headers: { "Content-Type": "application/json" },   body: JSON.stringify({
+      label: todo,
+      is_done: "false"
+    }) })
+    .then(response => response.json())
+    .then((data) => console.log(data))
+    .then((error) => console.log(error))
+    
+  }
+
 
 
   useEffect(() => {
@@ -44,7 +56,7 @@ const ToDoList = () => {
     <div className="text-center toDoList">
       <h1>To do List</h1>
       {<h1>Usuario: {user.name}</h1>}
-      <input type="text" /*value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && addTask(inputValue)}*/
+      <input type="text" value={inputValue} onChange={(event) => setInputValue(event.target.value)} onKeyDown={(event) => event.key === 'Enter' && createTodo(inputValue)}
         placeholder="¿Cual es la tarea a realizar?"
       />
       <ul>
@@ -52,7 +64,7 @@ const ToDoList = () => {
           <li className="task-item">No hay tareas registradas</li>
         ) : (
           todos.map((item) => (
-            <li key={id} className="task-item">
+            <li key={"id"} className="task-item">
               {item.label}
               <button className="delete-button" /*onClick={() => removeTask(index)}*/>X</button>
             </li>
